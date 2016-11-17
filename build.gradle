@@ -10,7 +10,6 @@ plugins {
 }
 
 group 'com.tealcubegames.gradle'
-version '0.0.1-SNAPSHOT'
 
 description = 'Common Gradle scripts for Teal Cube Games projects.'
 
