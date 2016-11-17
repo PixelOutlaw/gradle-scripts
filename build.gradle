@@ -26,11 +26,11 @@ bintray {
     key = System.getenv('BINTRAY_API_KEY') ?: bintrayKey
 
     pkg {
-        repo = 'tealcube-jars'
-        userOrg = 'tealcubegames'
-        websiteUrl = 'https://github.com/TealCube/${project.name}'
-        issueTrackerUrl = 'https://github.com/TealCube/${project.name}/issues'
-        vcsUrl = 'https://github.com/TealCube/${project.name}.git'
+        repo = 'pixeloutlaw-jars'
+        userOrg = 'pixeloutlaw'
+        websiteUrl = 'https://github.com/PixelOutlaw/${project.name}'
+        issueTrackerUrl = 'https://github.com/PixelOutlaw/${project.name}/issues'
+        vcsUrl = 'https://github.com/PixelOutlaw/${project.name}.git'
         licenses = ['MIT']
         labels = ['gradle', 'scripts', 'teal', 'cube', 'games']
     }
