@@ -47,10 +47,13 @@ artifactory {
     contextUrl = "${System.getenv('ARTIFACTORY_URL') ?: artifactory_contextUrl}"
     publish {
         repository {
-            repoKey = 'gradle-repoo'
+            repoKey = 'gradle-repo'
             username = "${System.getenv('ARTIFACTORY_USER') ?: artifactory_user}"
             password = "${System.getenv('ARTIFACTORY_PASSWORD') ?: artifactory_password}"
             maven = true
+        }
+        defaults {
+            publications('nebula')
         }
     }
     resolve {
