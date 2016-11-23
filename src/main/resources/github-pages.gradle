@@ -35,8 +35,10 @@ buildscript {
 allprojects {
     apply plugin: GithubPagesPlugin
 
-    if (tasks.findByPath('release') != null) {
+    try {
         tasks.release.dependsOn publishGhPages
+    } catch (Exception e) {
+        e.printStackTrace()
     }
 }
 

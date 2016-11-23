@@ -1,6 +1,6 @@
 apply plugin: 'java'
 
-apply from: project.file('src/main/resources/artifactory.gradle')
+apply from: project.file('src/main/resources/license.gradle')
 apply from: project.file('src/main/resources/common-plugins.gradle')
 apply from: project.file('src/main/resources/github-pages.gradle')
-apply from: project.file('src/main/resources/license.gradle')
+apply from: project.file('src/main/resources/artifactory.gradle')

@@ -35,9 +35,11 @@ buildscript {
 allprojects {
     apply plugin: ArtifactoryPlugin
 
-
-    if (tasks.findByPath('publish') != null) {
+    try {
+        tasks.artifactoryPublish.dependsOn build
         tasks.publish.dependsOn artifactoryPublish
+    } catch (Exception e) {
+        e.printStackTrace()
     }
 }
 
