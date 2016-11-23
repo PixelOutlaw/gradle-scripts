@@ -6,6 +6,8 @@ plugins {
     id 'org.ajoberstar.github-pages' version '1.6.0'
 }
 
+apply plugin: 'java'
+
 apply from: project.file('src/main/resources/artifactory.gradle')
 apply from: project.file('src/main/resources/license.gradle')
 
@@ -23,3 +25,5 @@ githubPages {
         into 'docs'
     }
 }
+
+tasks.release.finalizedBy publishGhPages
