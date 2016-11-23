@@ -24,3 +24,4 @@ githubPages {
 }
 
 tasks.release.finalizedBy publishGhPages
+tasks.publish.dependsOn artifactoryPublish
