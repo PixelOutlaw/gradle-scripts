@@ -34,6 +34,11 @@ buildscript {
 
 allprojects {
     apply plugin: ArtifactoryPlugin
+
+
+    if (tasks.findByPath('publish') != null) {
+        tasks.publish.dependsOn artifactoryPublish
+    }
 }
 
 artifactory {

@@ -11,7 +11,13 @@ buildscript {
     }
 }
 
-apply plugin: GithubPagesPlugin
+allprojects {
+    apply plugin: GithubPagesPlugin
+
+    if (tasks.findByPath('release') != null) {
+        tasks.release.dependsOn publishGhPages
+    }
+}
 
 githubPages {
     pages {

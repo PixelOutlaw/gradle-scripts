@@ -1,20 +1,6 @@
-buildscript { repositories { jcenter() } }
-plugins {
-    id 'nebula.project' version '3.3.0'
-    id 'nebula.info' version '3.3.4'
-    id 'pl.allegro.tech.build.axion-release' version '1.4.1'
-}
-
 apply plugin: 'java'
 
 apply from: project.file('src/main/resources/artifactory.gradle')
+apply from: project.file('src/main/resources/common-plugins.gradle')
 apply from: project.file('src/main/resources/github-pages.gradle')
 apply from: project.file('src/main/resources/license.gradle')
-
-project.group = 'io.pixeloutlaw.gradle'
-project.version = scmVersion.version
-
-description = 'Common Gradle scripts for Teal Cube Games projects.'
-
-tasks.release.finalizedBy publishGhPages
-tasks.publish.dependsOn artifactoryPublish
