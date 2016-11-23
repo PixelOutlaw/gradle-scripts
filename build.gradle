@@ -14,6 +14,8 @@ group 'io.pixeloutlaw.gradle'
 description = 'Common Gradle scripts for Teal Cube Games projects.'
 
 githubPages {
+    repoUri = 'https://github.com/PixelOutlaw/gradle-scripts.git'
+    targetBranch = 'gh-pages'
     pages {
         from 'src/main/resources'
         // by default this will copy into the root of the gh-pages branch and delete any previous files
