@@ -1,0 +1,20 @@
+import org.ajoberstar.gradle.git.ghpages.GithubPagesPlugin
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'org.ajoberstar:gradle-git:1.6.0'
+    }
+}
+
+apply plugin: GithubPagesPlugin
+
+githubPages {
+    pages {
+        from project.properties.get('githubPages.source') ?: 'docs'
+    }
+}
