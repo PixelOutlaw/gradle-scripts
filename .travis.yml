@@ -3,3 +3,4 @@ jdk:
 - oraclejdk8
 install: chmod +x ./gradlew && ./gradlew dependencies
 script: chmod +x ./gradlew && ./gradlew build
+after_success: chmod +x ./gradlew && ./gradlew publish
