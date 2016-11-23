@@ -19,7 +19,9 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import org.jfrog.gradle.plugin.artifactory.ArtifactoryPlugin
+import nebula.plugin.info.InfoPlugin
+import nebula.plugin.responsible.NebulaResponsiblePlugin
+import pl.allegro.tech.build.axion.release.ReleasePlugin
 
 buildscript {
     repositories {
@@ -28,40 +30,16 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'org.jfrog.buildinfo:build-info-extractor-gradle:4.4.9'
+        classpath 'com.netflix.nebula:nebula-project-plugin:3.3.0'
+        classpath 'com.netflix.nebula:gradle-info-plugin:3.3.4'
+        classpath 'pl.allegro.tech.build:axion-release-plugin:1.4.1'
     }
 }
 
 allprojects {
-    apply plugin: ArtifactoryPlugin
+    apply plugin: NebulaResponsiblePlugin
+    apply plugin: InfoPlugin
+    apply plugin: ReleasePlugin
 
-    try {
-        tasks.artifactoryPublish.dependsOn build
-        tasks.publish.dependsOn artifactoryPublish
-    } catch (Exception e) {
-        e.printStackTrace()
-    }
-}
-
-artifactory {
-    contextUrl = "${System.getenv('ARTIFACTORY_URL') ?: artifactory_contextUrl}"
-    publish {
-        repository {
-            repoKey = 'gradle-repo'
-            username = "${System.getenv('ARTIFACTORY_USER') ?: artifactory_user}"
-            password = "${System.getenv('ARTIFACTORY_PASSWORD') ?: artifactory_password}"
-            maven = true
-        }
-        defaults {
-            publications('nebula')
-        }
-    }
-    resolve {
-        repository {
-            repoKey = 'public'
-            username = "${System.getenv('ARTIFACTORY_USER') ?: artifactory_user}"
-            password = "${System.getenv('ARTIFACTORY_PASSWORD') ?: artifactory_password}"
-            maven = true
-        }
-    }
+    project.version = scmVersion.version
 }
