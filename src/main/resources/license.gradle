@@ -1,0 +1,32 @@
+import nl.javadude.gradle.plugins.license.LicensePlugin
+
+import java.time.LocalDateTime
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
+        classpath 'gradle.plugin.nl.javadude.gradle.plugins:license-gradle-plugin:0.13.1'
+    }
+}
+
+allprojects {
+    apply plugin: LicensePlugin
+}
+
+license {
+    header rootProject.file('HEADER')
+    ext.owner = 'Pixel Outlaw <topplethenun@pixeloutlaw.io>'
+    ext.year = getYearString()
+    ext.name = project.name
+}
+
+static def getYearString() {
+    def inceptionYear = 2016
+    def curYear = LocalDateTime.now().getYear()
+    return curYear == inceptionYear ? "${curYear}" : "${inceptionYear} - ${curYear}"
+}

@@ -105,3 +105,5 @@ gradle-app.setting
 
 # Don't ignore Gradle wrapper
 !gradle/wrapper/*
+
+docs/
