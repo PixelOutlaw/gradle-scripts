@@ -39,7 +39,7 @@ allprojects {
         tasks.artifactoryPublish.dependsOn build
         tasks.publish.dependsOn artifactoryPublish
     } catch (Exception e) {
-        e.printStackTrace()
+        println("${project.name} does not have a build task or it does not have a publish task")
     }
 }
 
