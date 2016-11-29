@@ -22,6 +22,7 @@
 import nebula.plugin.info.InfoPlugin
 import nebula.plugin.responsible.NebulaResponsiblePlugin
 import pl.allegro.tech.build.axion.release.ReleasePlugin
+import net.ltgt.gradle.apt.AptPlugin
 
 buildscript {
     repositories {
@@ -33,10 +34,13 @@ buildscript {
         classpath 'com.netflix.nebula:nebula-project-plugin:3.3.0'
         classpath 'com.netflix.nebula:gradle-info-plugin:3.3.4'
         classpath 'pl.allegro.tech.build:axion-release-plugin:1.4.1'
+        classpath 'net.ltgt.gradle:gradle-apt-plugin:0.9'
     }
 }
 
 allprojects {
+    apply plugin: JavaPlugin
+    apply plugin: AptPlugin
     apply plugin: NebulaResponsiblePlugin
     apply plugin: InfoPlugin
     apply plugin: ReleasePlugin
