@@ -48,6 +48,7 @@ allprojects {
 bintray {
     user = "${System.getenv('BINTRAY_USER') ?: bintray_user}"
     key = "${System.getenv('BINTRAY_KEY') ?: bintray_key}"
+    publications = ['nebula']
     pkg {
         repo = 'pixeloutlaw-jars'
         userOrg = 'pixeloutlaw'
