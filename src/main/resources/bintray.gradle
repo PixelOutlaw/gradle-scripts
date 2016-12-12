@@ -13,6 +13,15 @@ buildscript {
 
 allprojects {
     apply plugin: NebulaBintrayPublishingPlugin
+
+    try {
+        tasks.bintrayUpload.dependsOn build
+        if (!"${project.version}".endsWith('-SNAPSHOT')) {
+            tasks.publish.dependsOn bintrayUpload
+        }
+    } catch (Exception ignored) {
+        println("${project.name} does not have a build task or it does not have a publish task")
+    }
 }
 
 bintray {
