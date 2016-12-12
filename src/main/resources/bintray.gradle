@@ -1,0 +1,36 @@
+import nebula.plugin.bintray.NebulaBintrayPublishingPlugin
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'com.netflix.nebula:nebula-bintray-plugin:3.5.2'
+    }
+}
+
+allprojects {
+    apply plugin: NebulaBintrayPublishingPlugin
+}
+
+bintray {
+    user = "${System.getenv('BINTRAY_USER') ?: bintray_user}"
+    key = "${System.getenv('BINTRAY_KEY') ?: bintray_key}"
+    pkg {
+        repo = 'pixeloutlaw-jars'
+        userOrg = 'pixeloutlaw'
+        name = "${project.name}"
+        desc = "${project.description}"
+        websiteUrl = "https://github.com/PixelOutlaw/${rootProject.name}"
+        issueTrackerUrl = "https://github.com/PixelOutlaw/${rootProject.name}/issues"
+        vcsUrl = "https://github.com/PixelOutlaw/${rootProject.name}.git"
+        licenses = ['MIT']
+        publicDownloadNumbers = true
+        version {
+            name = project.version
+            vcsTag = project.version
+        }
+    }
+}
