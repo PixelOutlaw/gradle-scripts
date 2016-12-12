@@ -52,8 +52,8 @@ bintray {
     pkg {
         repo = 'pixeloutlaw-jars'
         userOrg = 'pixeloutlaw'
-        name = "${project.name}"
-        desc = "${project.description}"
+        name = "${rootProject.name}"
+        desc = "${rootProject.description}"
         websiteUrl = "https://github.com/PixelOutlaw/${rootProject.name}"
         issueTrackerUrl = "https://github.com/PixelOutlaw/${rootProject.name}/issues"
         vcsUrl = "https://github.com/PixelOutlaw/${rootProject.name}.git"
