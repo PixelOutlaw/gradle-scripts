@@ -44,12 +44,12 @@ allprojects {
 }
 
 artifactory {
-    contextUrl = "${System.getenv('ARTIFACTORY_URL') ?: artifactory_contextUrl}"
+    contextUrl = "${System.getenv('ARTIFACTORY_URL') ?: project.properties['artifactory_url']}"
     publish {
         repository {
             repoKey = 'gradle-repo'
-            username = "${System.getenv('ARTIFACTORY_USER') ?: artifactory_user}"
-            password = "${System.getenv('ARTIFACTORY_PASSWORD') ?: artifactory_password}"
+            username = "${System.getenv('ARTIFACTORY_USER') ?: project.properties['artifactory_user']}"
+            password = "${System.getenv('ARTIFACTORY_PASSWORD') ?: project.properties['artifactory_password']}"
             maven = true
         }
         defaults {
@@ -59,8 +59,8 @@ artifactory {
     resolve {
         repository {
             repoKey = 'public'
-            username = "${System.getenv('ARTIFACTORY_USER') ?: artifactory_user}"
-            password = "${System.getenv('ARTIFACTORY_PASSWORD') ?: artifactory_password}"
+            username = "${System.getenv('ARTIFACTORY_USER') ?: project.properties['artifactory_user']}"
+            password = "${System.getenv('ARTIFACTORY_PASSWORD') ?: project.properties['artifactory_password']}"
             maven = true
         }
     }
