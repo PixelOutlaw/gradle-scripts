@@ -1,0 +1,21 @@
+import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
+
+allprojects {
+    apply plugin: MavenPublishPlugin
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            artifact sourceJar {
+                classifier 'sources'
+            }
+
+            artifact javadocJar {
+                classifier 'javadoc'
+            }
+        }
+    }
+}
