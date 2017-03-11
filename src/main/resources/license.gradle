@@ -44,6 +44,10 @@ license {
     ext.owner = 'Pixel Outlaw <topplethenun@pixeloutlaw.io>'
     ext.year = getYearString()
     ext.name = project.name
+
+    mapping {
+        java = 'SLASHSTAR_STYLE'
+    }
 }
 
 static def getYearString() {
